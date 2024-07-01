@@ -19,12 +19,12 @@ const ShopContextProvider = (props) => {
     const [  allProduct, setAllProduct] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:4000/allproducts')
+        fetch('https://server-p12s.onrender.com/allproducts')
         .then((resp)=> resp.json())
         .then((data)=>setAllProduct(data))
 
         if(localStorage.getItem('auth-token')){
-            fetch('http://localhost:4000/getcart',{
+            fetch('https://server-p12s.onrender.com/getcart',{
                 method: 'POST',
                 headers:{
                     Accepts: 'application/form-data',
@@ -40,7 +40,7 @@ const ShopContextProvider = (props) => {
     const addToCart = (itemId)=> {
         setCartItem ((prev)=> ({...prev , [itemId]: prev[itemId]+1}))
         if(localStorage.getItem('auth-token')){
-            fetch('http://localhost:4000/addtocart',{
+            fetch('https://server-p12s.onrender.com/addtocart',{
                 method: 'POST',
                 headers:{
                     Accepts: 'application/form-data',
@@ -59,7 +59,7 @@ const ShopContextProvider = (props) => {
     const removeFromCart = (itemId)=> {
         setCartItem ((prev)=> ({...prev , [itemId]: prev[itemId]-1}))
         if(localStorage.getItem('auth-token')){
-            fetch('http://localhost:4000/removefromcart',{
+            fetch('https://server-p12s.onrender.com/removefromcart',{
                 method: 'POST',
                 headers:{
                     Accepts: 'application/form-data',
